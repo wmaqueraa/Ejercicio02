@@ -1,5 +1,6 @@
 package org.example;
 
+import org.example.implementacion.EXCELGenerator;
 import org.example.implementacion.PDFGenerator;
 import org.example.interfaces.IGeneradorReporte;
 import org.example.servicios.ReporteService;
@@ -9,8 +10,10 @@ import org.example.servicios.ReporteService;
 public class Main {
     public static void main(String[] args) {
         IGeneradorReporte pdf = new PDFGenerator();
-        ReporteService servicio = new ReporteService(pdf);
+        ReporteService servicioPdf = new ReporteService(pdf);
 
-        servicio.generar();
+        IGeneradorReporte excel = new EXCELGenerator();
+        ReporteService servicioExcel = new ReporteService(excel);
+        servicioExcel.generar();
     }
 }
